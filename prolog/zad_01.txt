@@ -1,0 +1,32 @@
+% Please define predicates member/2 oraz fac/2, fib/2 i gcd/3.
+
+member(X, [X, _]).
+
+member(X, [_|Tail]) :- member(X, Tail).
+
+factorial(0, 1).
+
+factorial(N, Result) :-
+    N > 0,
+    N1 is N - 1,
+    factorial(N1, Result1),
+    Result is Result1 * N.
+
+fibonacci(0, 0).
+fibonacci(1, 1).
+
+fibonacci(N, Result) :-
+    N > 1,
+    N1 is N - 1,
+    N2 is N - 2,
+    fibonacci(N1, Result1),
+    fibonacci(N2, Result2),
+    Result is Result1 + Result2.
+
+gcd(X, 0, X) :-
+    X > 0.
+
+gcd(X, Y, Result) :-
+    Y > 0,
+    Z is X mod Y,
+    gcd(Y, Z, Result).

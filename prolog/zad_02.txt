@@ -1,0 +1,43 @@
+% Suppose predicates parent/2, female/1 i male/1 wth the obvious interpretation are given. 
+% Please define predicates: 
+% child/2, mother/2, sister/2, has_a_child/1, grandparent/2 and predecessor/2. 
+
+parent(pam, filip).
+parent(jim, filip).
+parent(filip, max).
+parent(caroline, amelia).
+parent(caroline, jacob).
+
+female(caroline).
+female(pam).
+female(amelia).
+
+male(filip).
+male(max).
+male(jacob).
+
+child(X, Y) :-
+    parent(Y, X).
+
+mother(X, Y) :-
+    parent(X, Y),
+    female(X).
+
+sister(X, Y) :-
+    parent(Z, X),
+    parent(Z, Y),
+    female(X).
+
+has_a_child(X) :-
+    parent(X, _).
+
+grandparent(X, Y) :-
+    parent(X, Z),
+    parent(Z, Y).
+
+predecessor(X, Y) :-
+    parent(X, Y).
+
+predecessor(X, Y) :-
+    parent(X, Z),
+	predecessor(Z, Y).

@@ -1,0 +1,18 @@
+% Suppose the following predicate f/2 is given.
+
+f(1,one).
+f(s(1),two).
+f(s(s(1)),three).
+f(s(s(s(X))),N) :- f(X,N). 
+
+% How does Prolog answer to the following questions?
+
+% a. f(s(1),A)?
+% b. f(s(s(1)),two)?
+% c. f(s(s(s(s(s(s(1)))))),C)?
+% d. f(D,three)? 
+
+% a. A = two
+% b. false
+% c. C = one
+% d. D = s(s(1))
