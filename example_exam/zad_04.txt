@@ -1,0 +1,22 @@
+% a) Please define a predicate member2(X,L), that is fulfilled if the element X appears
+%    at least two times in the list L.
+
+member2(X, L) :- member2(X, L, 0).
+
+member2(_, [], Acc) :- Acc >= 2.
+
+member2(X, [X | Tail], Acc) :-
+    Acc1 is Acc + 1,
+    member2(X, Tail, Acc1).
+
+member2(X, [_ | Tail], Acc) :-
+    member2(X, Tail, Acc)
+
+% b) Please define a predicate down(N,L), that is fulfilled if L is the list [N,...0].
+
+down(0, [0]).
+
+down(N, [N | Tail]) :-
+    N > 0,
+    N1 is N - 1,
+    down(N1, Tail).

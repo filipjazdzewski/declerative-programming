@@ -1,0 +1,22 @@
+% a) member(X, L), that is fulfilled if x is an element of l list
+
+mymember(X, [X | _]).
+
+mymember(X, [_ | Tail]) :-
+    mymember(X, Tail).
+
+% b) split(X, L, L1, L2), that is fulfilled if list L1 contains the elements of L smaller than X
+%    and L2 the elements greater than X
+
+split(_, [], [], []).
+
+split(X, [Head | Tail], [Head | L1], L2) :-
+    Head < X,
+    split(X, Tail, L1, L2).
+
+split(X, [Head | Tail], L1, [Head | L2]) :-
+    Head > X,
+    split(X, Tail, L1, L2).
+
+split(X, [X | Tail], L1, L2) :-
+    split(X, Tail, L1, L2).

@@ -1,16 +1,15 @@
 #lang racket
-; a) (twice l) - (twice '(1 2 3)) => '(1 1 2 2 3 3)
+
+;; a) (twice l)
 (define (twice l)
-    (foldr (lambda (x acc)
-        (cons x (cons x acc))
-    ) '() l))
+  (foldr (lambda (x acc) (cons x (cons x acc))) '() l))
 
-(twice '(1 2 3))
+(twice '(1 2 3 4))
 
-; b) (sum f r)
+;; b) (sum f r)
 (define (sum f r)
-    (if (eq? r 0)
-        (f r)
-        (+ (f r) (sum f (- r 1)))))
+  (if (eq? r 0)
+    (f r)
+    (+ (f r) (sum f (- r 1)))))
 
-(sum (lambda (x) (+ x 2)) 3)
+(sum (lambda (x) (* x x)) 4)

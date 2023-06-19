@@ -1,0 +1,23 @@
+% a) reverse(L1, L2), that is fulfilled if L2 is list L1 in reversed order
+
+reverse([], []).
+reverse([Head | Tail], Reversed) :-
+    reverse(Tail, ReversedTail),
+    append(ReversedTail, [Head], Reversed).
+
+% b) split(X, L, L1, L2), that is fulfilled if list L1 contains the elements of L smaller than X
+%    and L2 the elements greater than X
+
+split(_, [], [], []).
+
+split(X, [Head | Tail], [Head | L1], L2) :-
+    Head < X,
+    split(X, Tail, L1, L2).
+
+split(X, [Head | Tail], L1, [Head | L2]) :-
+    Head > X,
+    split(X, Tail, L1, L2).
+
+split(X, [X | Tail], L1, L2) :-
+    split(X, Tail, L1, L2).
+    

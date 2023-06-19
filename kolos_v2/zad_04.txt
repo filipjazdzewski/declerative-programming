@@ -1,0 +1,26 @@
+% Define shift(L1, L2), that is fulfilled if list L2 is equal to L1 after 1 rotation to the left
+% Example:
+% ?- shift([1, 2, 3, 4], L)
+% L = [2, 3, 4, 1]
+
+shift([], []).
+
+shift([Head | Tail], L2) :-
+    append(Tail, [Head], L2).
+    
+% Define sil(N, L), that is fulfilled if L is a list of values N! from N to 0.
+
+factorial(0, 1).
+factorial(N, Result) :-
+    N > 0,
+    N1 is N - 1,
+    factorial(N1, Result1),
+    Result is Result1 * N.
+
+sil(0, [1]).
+
+sil(N, [Head | Tail]) :-
+    factorial(N, F),
+    Head is F,
+    N1 is N - 1,
+    sil(N1, Tail).

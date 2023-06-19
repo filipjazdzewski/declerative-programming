@@ -1,0 +1,27 @@
+% Please define predicates plus/3, times/3, fib/2 oraz sum-up/2 (using recursion).
+% Predicate sum-up(N,X) is fulfilled, if X is the sum from 0 to N.
+
+myplus(X, Y, Result) :-
+    Result is X + Y.
+
+mytimes(X, Y, Result) :-
+    Result is X * Y.
+
+fibonacci(0, 0).
+fibonacci(1, 1).
+
+fibonacci(N, Result) :-
+    N > 1,
+    N1 is N - 1,
+    N2 is N - 2,
+    fibonacci(N1, Result1),
+    fibonacci(N2, Result2),
+    Result is Result1 + Result2.
+
+sumup(0, 0).
+
+sumup(N, Result) :-
+    N > 0,
+    N1 is N - 1,
+    sumup(N1, Result1),
+    Result is Result1 + N.
